@@ -9,16 +9,8 @@ local map = vim.keymap.set
 -- the <C-w> command doesn't require
 -- a <CR>
 
-if vim.fn.maparg("n", "<C-w>d") ~= "" then
-    vim.keymap.del("n", "<C-w>d")
-end
-
-if vim.fn.maparg("n", "<C-W><C-D>") ~= "" then
-    vim.keymap.del("n", "<C-W><C-D>")
-end
-
--- map("n", "<C-w>d", "<nop>")
--- map("n", '<C-w><C-D>', "<nop>")
+vim.keymap.del("n", "<C-W>d")
+vim.keymap.del("n", "<C-W><C-D>")
 
 map("n", "Q", "<nop>")
 
