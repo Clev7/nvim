@@ -1,9 +1,16 @@
 local map = vim.keymap.set
 
 -- Clear keybinds
---
+
+
+-- TODO: switch out these nops
+-- for checking whether they exist.
+-- before deleting them. That way,
+-- the <C-w> command doesn't require
+-- a <CR>
 map("n", "<C-w>d", "<nop>")
 map("n", '<C-w><C-D>', "<nop>")
+
 map("n", "Q", "<nop>")
 
 map("i", "jk", "<esc>", {noremap=true})
