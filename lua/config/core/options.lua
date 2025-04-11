@@ -27,7 +27,9 @@ opt.cursorline = true
 opt.termguicolors = true
 
 -- have at least 8 lines underneath you when you scroll down
-vim.opt.scrolloff = 8
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = "100"
-vim.opt.clipboard = "unnamed,unnamedplus"
+opt.scrolloff = 8
+opt.updatetime = 50
+opt.colorcolumn = "100"
+opt.clipboard = "unnamed,unnamedplus"
+
+opt.signcolumn = "yes"
