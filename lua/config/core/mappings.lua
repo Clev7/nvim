@@ -8,8 +8,17 @@ local map = vim.keymap.set
 -- before deleting them. That way,
 -- the <C-w> command doesn't require
 -- a <CR>
-map("n", "<C-w>d", "<nop>")
-map("n", '<C-w><C-D>', "<nop>")
+
+if vim.fn.maparg("n", "<C-w>d") ~= "" then
+    vim.keymap.del("n", "<C-w>d")
+end
+
+if vim.fn.maparg("n", "<C-W><C-D>") ~= "" then
+    vim.keymap.del("n", "<C-W><C-D>")
+end
+
+-- map("n", "<C-w>d", "<nop>")
+-- map("n", '<C-w><C-D>', "<nop>")
 
 map("n", "Q", "<nop>")
 
