@@ -1,3 +1,6 @@
+-- NOTE: DO NOT type pass a path to nvim!
+-- It will make the cwd static
+
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = "nvim-tree/nvim-web-devicons",
