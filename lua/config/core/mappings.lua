@@ -53,6 +53,7 @@ map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", "\"_dP")
 
+-- Credit: theprimeagen
 -- These might be worth considering
 -- If you want to decouple the system
 -- clipboard from the neovim clipboard
