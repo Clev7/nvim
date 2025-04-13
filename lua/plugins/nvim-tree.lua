@@ -1,6 +1,3 @@
--- NOTE: DO NOT type pass a path to nvim!
--- It will make the cwd static
-
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = "nvim-tree/nvim-web-devicons",
@@ -12,6 +9,15 @@ return {
     vim.g.loaded_netrwPlugin = 1
 
     nvimtree.setup({
+      sync_root_with_cwd = true,
+      respect_buf_cwd = true,
+      update_focused_file = {
+        enable = true,
+        -- Honestly I genuinely have no clue whether to use this or not
+        -- update_root = {
+        --   enable = true,
+        -- }
+      },
       view = {
         width = 35,
         relativenumber = true,
@@ -57,12 +63,16 @@ return {
     })
 
     -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    -- for conciseness
+    local keymap = vim.keymap
 
     keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {silent = true, noremap = true, desc = "Toggle file explorer"})
     keymap.set("n", "<leader>n", ":NvimTreeFocus<CR>", {silent = true, noremap = true, desc = "Focus file explorer"})
 
-    -- keymap.set("n", "<leader>", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    -- toggle file explorer on current file
+    keymap.set("n", "<leader>", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+
+  -- refresh file explorer    -- refresh file explorer
+    keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
   end
 }
