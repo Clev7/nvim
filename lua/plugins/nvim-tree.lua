@@ -70,7 +70,7 @@ return {
     keymap.set("n", "<leader>n", ":NvimTreeFocus<CR>", {silent = true, noremap = true, desc = "Focus file explorer"})
 
     -- toggle file explorer on current file
-    keymap.set("n", "<leader>", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
+    keymap.set("n", "<leader>cf", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
 
   -- refresh file explorer    -- refresh file explorer
     keymap.set("n", "<leader>r", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })

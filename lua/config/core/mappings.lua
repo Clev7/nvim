@@ -23,7 +23,7 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
+map({"n", "i"}, "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
 -- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
@@ -51,7 +51,11 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "<leader>p", "\"_dP")
+map("x", "zp", "\"_dP")
+
+-- Dumping binds
+map("n", "zd", "\"_d")
+map("n", "zc", "\"_c")
 
 -- Credit: theprimeagen
 -- These might be worth considering
