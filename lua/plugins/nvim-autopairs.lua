@@ -1,3 +1,5 @@
+-- For autocompleting paren pairs
+
 return {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
