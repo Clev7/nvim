@@ -52,6 +52,10 @@ return {
                         capabilites = capabilites,
                         settings = {
                             Lua = {
+                                runtime = {
+                                    version = 'LuaJIT',
+                                    path = vim.split(package.path, ';'),
+                                },
                                 diagnostics = {
                                   globals = { "vim" },
                                   disable = { "missing-fields" }
@@ -67,8 +71,16 @@ return {
                                         indent_style = "space",
                                         indent_size = "2",
                                     }
+                                },
+
+                                workspace = {
+                                    library = {
+                                        vim.env.VIMRUNTIME,
+                                    }
                                 }
-                            }
+                            },
+
+                            telemetry = { enable = false }
                         }
                     })
                 end
@@ -93,7 +105,7 @@ return {
                 -- Autocompletes what you're typing
                 ["<C-<leader>>"] = cmp.mapping.complete(),
             }),
-            
+
 
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
