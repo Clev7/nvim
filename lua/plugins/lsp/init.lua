@@ -15,12 +15,44 @@ return {
     },
 
     config = function()
-        require("conform").setup({
+        local conform = require("conform")
+        local util = require("conform.util")
+        conform.setup({
             formatters_by_ft = {
                 lua = { "stylua" },
+                go = { "gofmt" },
+                rust = { "rustfmt", lsp_format = "fallback" },
+                python = { "ruff_format" },
+                java = { "google-java-format" },
+                cpp = { "clang-format" },
                 javascript = { "prettierd" },
-                typescript = { "prettierd" },
+                typescript = { "prettierd" }
+            },
+
+            formatters = {
+                cwd = util.root_file({
+                    -- https://prettier.io/docs/en/configuration.html
+                    ".prettierrc",
+                    ".prettierrc.json",
+                    ".prettierrc.yml",
+                    ".prettierrc.yaml",
+                    ".prettierrc.json5",
+                    ".prettierrc.js",
+                    ".prettierrc.cjs",
+                    ".prettierrc.mjs",
+                    ".prettierrc.toml",
+                    "prettier.config.js",
+                    "prettier.config.cjs",
+                    "prettier.config.mjs",
+                    -- "package.json",
+                })
             }
+        })
+
+        -- Comment this out if it gets too annoying
+        conform.format_on_save({
+            timeout_ms = 500,
+            lsp_fallback = true,
         })
 
         local cmp = require("cmp")
@@ -33,7 +65,7 @@ return {
         )
 
         require("fidget").setup({})
-        lspconfig = require("lspconfig")
+        local lspconfig = require("lspconfig")
         require("mason").setup({})
         require("mason-lspconfig").setup({
             ensure_installed = {
@@ -57,11 +89,11 @@ return {
                                     path = vim.split(package.path, ';'),
                                 },
                                 diagnostics = {
-                                  globals = { "vim" },
-                                  disable = { "missing-fields" }
+                                    globals = { "vim" },
+                                    disable = { "missing-fields" }
                                 },
                                 completion = {
-                                  callSnippet = "Replace"
+                                    callSnippet = "Replace"
                                 },
                                 format = {
                                     enable = true,
@@ -111,7 +143,7 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
             }, {
-                { name = 'buffer'}
+                { name = 'buffer' }
             })
         })
 
