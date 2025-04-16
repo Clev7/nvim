@@ -32,28 +32,30 @@ autocmd("LspAttach", {
 		-- set keybinds
 		opts.desc = "show lsp references"
 
+		-- TODO: figure out what the difference is between all of these lmao
+
 		-- show definition, references
-		vim.keymap.set("n", "gr", "<cmd>telescope lsp_references<cr>", opts)
+		vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
 
 		opts.desc = "go to declaration"
 
 		-- go to declaration
-		vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
 		opts.desc = "show lsp definitions"
 
 		-- show lsp definitions
-		vim.keymap.set("n", "gd", "<cmd>telescope lsp_definitions<cr>", opts)
+		vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
 
 		opts.desc = "show lsp implementations"
 
 		-- show lsp implementations
-		vim.keymap.set("n", "gi", "<cmd>telescope lsp_implementations<cr>", opts)
+		vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
 
 		opts.desc = "show lsp type definitions"
 
 		-- show lsp type definitions
-		vim.keymap.set("n", "gt", "<cmd>telescope lsp_type_definitions<cr>", opts)
+		vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
 
 		opts.desc = "see available code actions"
 
@@ -68,7 +70,7 @@ autocmd("LspAttach", {
 		opts.desc = "show buffer diagnostics"
 
 		-- show  diagnostics for file
-		vim.keymap.set("n", "<leader>d", "<cmd>telescope diagnostics bufnr=0<cr>", opts)
+		vim.keymap.set("n", "<leader>d", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
 
 		opts.desc = "show line diagnostics"
 
