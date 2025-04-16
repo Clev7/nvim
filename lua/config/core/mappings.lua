@@ -6,9 +6,9 @@ vim.keymap.del("n", "<C-W><C-D>")
 
 map("n", "Q", "<nop>")
 
-map("i", "jk", "<esc>", {noremap=true})
-map("n", "<C-w>", "<cmd>confirm q<CR>", { desc = "quit the current buffer"})
-map("n", "<C-q>", "<cmd>confirm qa<CR>", { desc = "quit all buffers"})
+map("i", "jk", "<esc>", { noremap = true })
+map("n", "<C-w>", "<cmd>confirm q<CR>", { desc = "quit the current buffer" })
+map("n", "<C-q>", "<cmd>confirm qa<CR>", { desc = "quit all buffers" })
 
 -- map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 -- map("i", "<C-e>", "<End>", { desc = "move end of line" })
@@ -23,17 +23,17 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-map({"n", "i"}, "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
+map({ "n", "i" }, "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
 -- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
 -- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 
-map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer"})
-map("n", "<S-TAB>", "<cmd>bprevious<CR>", { desc = "go to the previous buffer"})
+map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer" })
+map("n", "<S-TAB>", "<cmd>bprevious<CR>", { desc = "go to the previous buffer" })
 
 map("n", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true }
+	require("conform").format({ lsp_fallback = true })
 end, { desc = "general format file" })
 
 -- Move the current selection up down
@@ -51,11 +51,11 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "zp", "\"_dP")
+map("x", "zp", '"_dP')
 
 -- Dumping binds
-map("n", "zd", "\"_d")
-map("n", "zc", "\"_c")
+map("n", "zd", '"_d')
+map("n", "zc", '"_c')
 
 -- Credit: theprimeagen
 -- These might be worth considering
@@ -68,4 +68,3 @@ map("n", "<leader>Y", "\"+Y")
 
 map("n", "<leader>d", "\"_d")
 map("v", "<leader>d", "\"_d") ]]
-

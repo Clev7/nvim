@@ -8,6 +8,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
+opt.smarttab = true
 
 opt.smartindent = true
 opt.wrap = false
@@ -31,5 +32,6 @@ opt.scrolloff = 8
 opt.updatetime = 50
 opt.colorcolumn = "100"
 opt.clipboard = "unnamed,unnamedplus"
+opt.isfname:append("@-@")
 
 opt.signcolumn = "yes"

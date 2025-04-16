@@ -1,117 +1,117 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local yank_group = augroup('HighlightYank', {})
-local custom_group = augroup('Custom', {})
+local yank_group = augroup("HighlightYank", {})
+local custom_group = augroup("Custom", {})
 
-autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({
-            hlgroup = 'IncSearch',
-            timeout = 40
-        })
-    end
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			hlgroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
 })
 
 -- Removes trailing whitespace (ignoring errors)
-autocmd({"BufWritePre"}, {
-    group = custom_group,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
+autocmd({ "BufWritePre" }, {
+	group = custom_group,
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
 })
 
 autocmd("LspAttach", {
-    group = custom_group,
-    callback = function(ev)
-        -- buffer local mappings.
-        -- see `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf, silent = true }
+	group = custom_group,
+	callback = function(ev)
+		-- buffer local mappings.
+		-- see `:help vim.lsp.*` for documentation on any of the below functions
+		local opts = { buffer = ev.buf, silent = true }
 
-        -- set keybinds
-        opts.desc = "show lsp references"
+		-- set keybinds
+		opts.desc = "show lsp references"
 
-        -- show definition, references
-        vim.keymap.set("n", "gr", "<cmd>telescope lsp_references<cr>", opts)
+		-- show definition, references
+		vim.keymap.set("n", "gr", "<cmd>telescope lsp_references<cr>", opts)
 
-        opts.desc = "go to declaration"
+		opts.desc = "go to declaration"
 
-        -- go to declaration
-        vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
+		-- go to declaration
+		vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
 
-        opts.desc = "show lsp definitions"
+		opts.desc = "show lsp definitions"
 
-        -- show lsp definitions
-        vim.keymap.set("n", "gd", "<cmd>telescope lsp_definitions<cr>", opts)
+		-- show lsp definitions
+		vim.keymap.set("n", "gd", "<cmd>telescope lsp_definitions<cr>", opts)
 
-        opts.desc = "show lsp implementations"
+		opts.desc = "show lsp implementations"
 
-        -- show lsp implementations
-        vim.keymap.set("n", "gi", "<cmd>telescope lsp_implementations<cr>", opts)
+		-- show lsp implementations
+		vim.keymap.set("n", "gi", "<cmd>telescope lsp_implementations<cr>", opts)
 
-        opts.desc = "show lsp type definitions"
+		opts.desc = "show lsp type definitions"
 
-        -- show lsp type definitions
-        vim.keymap.set("n", "gt", "<cmd>telescope lsp_type_definitions<cr>", opts)
+		-- show lsp type definitions
+		vim.keymap.set("n", "gt", "<cmd>telescope lsp_type_definitions<cr>", opts)
 
-        opts.desc = "see available code actions"
+		opts.desc = "see available code actions"
 
-        -- see available code actions, in visual mode will apply to selection
-        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		-- see available code actions, in visual mode will apply to selection
+		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
-        opts.desc = "smart rename"
+		opts.desc = "smart rename"
 
-        -- smart rename
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		-- smart rename
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-        opts.desc = "show buffer diagnostics"
+		opts.desc = "show buffer diagnostics"
 
-        -- show  diagnostics for file
-        vim.keymap.set("n", "<leader>d", "<cmd>telescope diagnostics bufnr=0<cr>", opts)
+		-- show  diagnostics for file
+		vim.keymap.set("n", "<leader>d", "<cmd>telescope diagnostics bufnr=0<cr>", opts)
 
-        opts.desc = "show line diagnostics"
+		opts.desc = "show line diagnostics"
 
-        -- show diagnostics for line
-        vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+		-- show diagnostics for line
+		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-        opts.desc = "go to previous diagnostic"
+		opts.desc = "go to previous diagnostic"
 
-        -- jump to previous diagnostic in buffer
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+		-- jump to previous diagnostic in buffer
+		vim.keymap.set("n", "<C-[>", vim.diagnostic.goto_prev, opts)
 
-        opts.desc = "go to next diagnostic"
+		opts.desc = "go to next diagnostic"
 
-        -- jump to next diagnostic in buffer
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+		-- jump to next diagnostic in buffer
+		vim.keymap.set("n", "<C-]>", vim.diagnostic.goto_next, opts)
 
-        opts.desc = "show documentation for what is under cursor"
+		opts.desc = "show documentation for what is under cursor"
 
-        -- show documentation for what is under cursor
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		-- show documentation for what is under cursor
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-        opts.desc = "restart lsp"
+		opts.desc = "restart lsp"
 
-        -- mapping to restart lsp if necessary
-        vim.keymap.set("n", "<leader>rs", ":lsprestart<cr>", opts)
+		-- mapping to restart lsp if necessary
+		vim.keymap.set("n", "<leader>rs", ":lsprestart<cr>", opts)
 
-        opts.desc = "format the current buffer"
-        opts.silent = false
+		opts.desc = "format the current buffer"
+		opts.silent = false
 
-        vim.keymap.set("n", "<leader>fm", function()
-          vim.lsp.buf.format({ async = true })
-        end, opts)
+		vim.keymap.set("n", "<leader>fm", function()
+			require("conform").format({ bufnr = 0 })
+		end, opts)
 
-        -- ThePrimeagen's Stuff
-        -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        -- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-        -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-        -- vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-        -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    end
+		-- ThePrimeagen's Stuff
+		-- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+		-- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+		-- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+		-- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+		-- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+		-- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+		-- vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+		-- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+		-- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+		-- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+	end,
 })
