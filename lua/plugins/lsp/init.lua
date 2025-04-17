@@ -53,10 +53,10 @@ return {
 			},
 
 			-- Comment this out if it gets too annoying
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
+			-- format_on_save = {
+			-- 	timeout_ms = 500,
+			-- 	lsp_fallback = true,
+			-- },
 		})
 
 		local cmp = require("cmp")

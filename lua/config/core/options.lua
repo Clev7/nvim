@@ -33,5 +33,5 @@ opt.updatetime = 50
 opt.colorcolumn = "100"
 opt.clipboard = "unnamed,unnamedplus"
 opt.isfname:append("@-@")
-
 opt.signcolumn = "yes"
+

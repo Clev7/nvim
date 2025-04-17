@@ -2,6 +2,6 @@
 return {
     'romainl/vim-cool',
     config = function()
-        vim.o.hlsearch = true
+        vim.opt.hlsearch = true
     end,
 }
