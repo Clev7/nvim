@@ -1,11 +1,12 @@
 return {
     "navarasu/onedark.nvim",
+    enabled = false,
     name="onedark",
     priority=1000,
     config = function()
 
         require("onedark").setup({
-            transparent = true
+            -- transparent = true
         })
 
         -- This is for making the background set to your terminal.
@@ -13,8 +14,8 @@ return {
         -- an Ubuntu dark red background lol.
         --
         --
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+        -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         vim.cmd.colorscheme("onedark")
     end
 }

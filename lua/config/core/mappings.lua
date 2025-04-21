@@ -54,6 +54,8 @@ map("n", "N", "Nzzzv")
 map("x", "zp", '"_dP')
 
 -- Dumping binds
+-- Figure this out later :/
+-- You need to
 map("n", "zd", '"_d')
 map("n", "zc", '"_c')
 

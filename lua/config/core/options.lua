@@ -23,7 +23,8 @@ opt.undofile = true
 opt.ignorecase = true
 opt.smartcase = true
 
-opt.cursorline = true
+-- Highlights the line your cursor is on
+-- opt.cursorline = true
 
 opt.termguicolors = true
 
