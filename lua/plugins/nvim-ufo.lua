@@ -3,7 +3,7 @@ return {
     enabled = true,
     dependencies = {
         'kevinhwang91/promise-async',
-        {
+        --[[ {
             "luukvbaal/statuscol.nvim",
             config = function ()
                 local builtin = require("statuscol.builtin")
@@ -16,7 +16,7 @@ return {
                     }
                 })
             end
-        }
+        } ]]
     },
     config = function ()
 
@@ -30,7 +30,7 @@ return {
 
         -- '0' is not bad
         -- TODO: Figure out how to use this
-        vim.opt.foldcolumn = "1"
+        --[[ vim.opt.foldcolumn = "1" ]]
         -- Using ufo provider need a large value, feel free to decrease the value
         vim.opt.foldlevel = 99
         vim.opt.foldlevelstart = 99

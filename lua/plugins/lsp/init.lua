@@ -28,6 +28,7 @@ return {
 				typescript = { "prettierd" },
 				typescriptreact = { "prettierd" },
 				javascriptreact = { "prettierd" },
+				markdown = { "grammarly" },
 			},
 
 			formatters = {

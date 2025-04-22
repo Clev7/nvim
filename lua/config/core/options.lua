@@ -10,7 +10,8 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.smarttab = true
 
-opt.smartindent = true
+-- Guess indent is doing the work now.
+-- opt.smartindent = true
 opt.wrap = false
 
 opt.swapfile = false
