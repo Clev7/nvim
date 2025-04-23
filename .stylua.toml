@@ -1,0 +1,4 @@
+# You just kind of need it to be 120
+# otherwise things get formatted ugly
+column_width = 120
+indent_type = "Spaces"
