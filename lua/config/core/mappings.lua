@@ -9,19 +9,23 @@ map("n", "Q", "<nop>")
 map("i", "jk", "<esc>", { noremap = true })
 map("n", "<C-w>", "<cmd>confirm q<CR>", { desc = "quit the current window" })
 map("n", "<C-q>", "<cmd>confirm qa<CR>", { desc = "quit all windows" })
-map("n", "<leader>w", "<cmd>bd<cr>", {
+map("n", "<leader>w", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", {
     desc = "Exits the current buffer (with confirmation if you didn't save)",
     -- buffer = true,
     silent = true,
     noremap = true,
 })
 
--- map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
--- map("i", "<C-e>", "<End>", { desc = "move end of line" })
--- map("i", "<C-h>", "<Left>", { desc = "move left" })
--- map("i", "<C-l>", "<Right>", { desc = "move right" })
--- map("i", "<C-j>", "<Down>", { desc = "move down" })
--- map("i", "<C-k>", "<Up>", { desc = "move up" })
+map("n", "<leader>1", "<cmd>b1<CR>")
+map("n", "<leader>2", "<cmd>b2<CR>")
+map("n", "<leader>3", "<cmd>b3<CR>")
+map("n", "<leader>4", "<cmd>b4<CR>")
+map("n", "<leader>5", "<cmd>b5<CR>")
+map("n", "<leader>6", "<cmd>b6<CR>")
+map("n", "<leader>7", "<cmd>b7<CR>")
+map("n", "<leader>8", "<cmd>b8<CR>")
+map("n", "<leader>9", "<cmd>b9<CR>")
+map("n", "<leader>0", "<cmd>b10<CR>")
 
 -- Allows you to move around between windows
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
@@ -36,7 +40,7 @@ map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 -- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 
 map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer" })
-map("n", "<S-TAB>", "<cmd>bprevious<CR>", { desc = "go to the previous buffer" })
+map("n", "<S-TAB>", "<cmd>b#<CR>", { desc = "go to the previous buffer" })
 
 map("n", "<leader>fm", function()
     require("conform").format({ lsp_fallback = true })
