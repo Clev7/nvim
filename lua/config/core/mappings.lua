@@ -7,8 +7,14 @@ vim.keymap.del("n", "<C-W><C-D>")
 map("n", "Q", "<nop>")
 
 map("i", "jk", "<esc>", { noremap = true })
-map("n", "<C-w>", "<cmd>confirm q<CR>", { desc = "quit the current buffer" })
-map("n", "<C-q>", "<cmd>confirm qa<CR>", { desc = "quit all buffers" })
+map("n", "<C-w>", "<cmd>confirm q<CR>", { desc = "quit the current window" })
+map("n", "<C-q>", "<cmd>confirm qa<CR>", { desc = "quit all windows" })
+map("n", "<leader>w", "<cmd>bd<cr>", {
+    desc = "Exits the current buffer (with confirmation if you didn't save)",
+    -- buffer = true,
+    silent = true,
+    noremap = true,
+})
 
 -- map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 -- map("i", "<C-e>", "<End>", { desc = "move end of line" })
@@ -33,7 +39,7 @@ map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer" })
 map("n", "<S-TAB>", "<cmd>bprevious<CR>", { desc = "go to the previous buffer" })
 
 map("n", "<leader>fm", function()
-	require("conform").format({ lsp_fallback = true })
+    require("conform").format({ lsp_fallback = true })
 end, { desc = "general format file" })
 
 -- Move the current selection up down
@@ -55,9 +61,8 @@ map("x", "zp", '"_dP')
 
 -- Dumping binds
 -- Figure this out later :/
--- You need to
-map("n", "zd", '"_d')
-map("n", "zc", '"_c')
+map({ "n", "v" }, "zd", '"_d')
+map({ "n", "v" }, "zc", '"_c')
 
 -- Credit: theprimeagen
 -- These might be worth considering
