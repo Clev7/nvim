@@ -2,7 +2,7 @@
 
 return {
     'ojroques/nvim-osc52',
-    enabled = false,
+    enabled = true,
     config = function()
         local osc52 = require("osc52")
 

@@ -16,16 +16,6 @@ map("n", "<leader>w", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", {
     noremap = true,
 })
 
-map("n", "<leader>1", "<cmd>b1<CR>")
-map("n", "<leader>2", "<cmd>b2<CR>")
-map("n", "<leader>3", "<cmd>b3<CR>")
-map("n", "<leader>4", "<cmd>b4<CR>")
-map("n", "<leader>5", "<cmd>b5<CR>")
-map("n", "<leader>6", "<cmd>b6<CR>")
-map("n", "<leader>7", "<cmd>b7<CR>")
-map("n", "<leader>8", "<cmd>b8<CR>")
-map("n", "<leader>9", "<cmd>b9<CR>")
-map("n", "<leader>0", "<cmd>b10<CR>")
 
 -- Allows you to move around between windows
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })

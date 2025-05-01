@@ -1,4 +1,5 @@
 return {
+    enabled = true,
     "neovim/nvim-lspconfig",
     dependencies = {
         "stevearc/conform.nvim",
@@ -132,6 +133,10 @@ return {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body)
                 end,
+            },
+
+            completion = {
+                autcomplete = { "InsertEnter", "TextChangedI"}
             },
 
             mapping = cmp.mapping.preset.insert({

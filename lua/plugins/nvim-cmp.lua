@@ -1,7 +1,7 @@
--- For autocompletion
 
+-- I believe this is Josean's config
 return {
-  enabled=true,
+  enabled=false,
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
