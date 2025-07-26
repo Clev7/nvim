@@ -22,6 +22,13 @@ autocmd({ "BufWritePre" }, {
 	command = [[%s/\s\+$//e]],
 })
 
+autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.eol = false
+  end
+})
+
 autocmd("LspAttach", {
 	group = custom_group,
 	callback = function(ev)

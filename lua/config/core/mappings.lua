@@ -16,7 +16,6 @@ map("n", "<leader>w", "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>", {
     noremap = true,
 })
 
-
 -- Allows you to move around between windows
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
@@ -30,7 +29,7 @@ map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 -- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 
 map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer" })
-map("n", "<S-TAB>", "<cmd>b#<CR>", { desc = "go to the previous buffer" })
+map("n", "<S-TAB>", "<cmd>bprev<CR>", { desc = "go to the previous buffer" })
 
 map("n", "<leader>fm", function()
     require("conform").format({ lsp_fallback = true })

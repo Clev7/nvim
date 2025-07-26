@@ -8,25 +8,30 @@ return {
     },
     config = function()
         local comment = require("Comment")
-        local ts_context_commentstring = require("ts_context_commentstring.integrations.comment_nvim")
+        local ts_context_commentstring = require("ts_context_commentstring")
+        ts_context_commentstring.setup({
+            enable_autocmd = false,
+        })
+        local ts_context_commentstring_comment_nvim = require("ts_context_commentstring.integrations.comment_nvim")
 
         -- enable comment
         comment.setup({
-            pre_hook = ts_context_commentstring.create_pre_hook(),
+            pre_hook = ts_context_commentstring_comment_nvim.create_pre_hook(),
 
             toggler = {
-                line = '<leader>/',
-                block = '<C-_>'
+                line = "<leader>/",
+                block = "<C-_>",
             },
 
             opleader = {
-            line = '<leader>/',
-            block = '<C-_>'
+                line = "<leader>/",
+                block = "<C-_>",
             },
 
             mappings = {
                 basic = true,
-            }
+                extra = false,
+            },
         })
-    end
+    end,
 }

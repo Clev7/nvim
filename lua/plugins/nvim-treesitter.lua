@@ -9,20 +9,18 @@ return {
             "lua",
             "javascript",
             "typescript",
+            "tsx",
             "rust",
             "java",
             "go",
         },
 
         sync_install = false,
-
         auto_install = true,
-
         ignore_install = {},
 
         highlight = {
             enable = true,
-
             additional_vim_regex_highlighting = false,
         },
 
@@ -30,6 +28,11 @@ return {
             enable = true,
         },
 
-        modules = {}
-    }
+        modules = {},
+
+        context_commentstring = {
+            enable = true,
+            enable_autcomd = false,
+        },
+    },
 }

@@ -14,10 +14,10 @@ return {
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
-
     config = function()
         local conform = require("conform")
         local util = require("conform.util")
+
         conform.setup({
             formatters_by_ft = {
                 lua = { "stylua" },
@@ -60,7 +60,6 @@ return {
             -- 	lsp_fallback = true,
             -- },
         })
-
         local cmp = require("cmp")
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilites = vim.tbl_deep_extend(
@@ -77,6 +76,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "rust_analyzer",
+                "jdtls",
             },
 
             handlers = {
@@ -126,8 +126,8 @@ return {
             },
         })
 
+        -- cmp config
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -136,7 +136,9 @@ return {
             },
 
             completion = {
-                autcomplete = { "InsertEnter", "TextChangedI"}
+                -- I'm not sure why completeopt works and autocomplete doesn't
+                -- autocomplete = { "InsertEnter", "TextChangedI"},
+                completeopt = "menu,menuone,noselect"
             },
 
             mapping = cmp.mapping.preset.insert({
@@ -146,7 +148,7 @@ return {
                 -- Confirms autcomplete selection
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 -- Autocompletes what you're typing
-                ["<C-<leader>>"] = cmp.mapping.complete(),
+                ["<C-Space>"] = cmp.mapping.complete(),
             }),
 
             sources = cmp.config.sources({

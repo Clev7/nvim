@@ -22,7 +22,7 @@ return {
 
         bufferline.setup({
             options = {
-
+                numbers = 'ordinal'
             },
         })
     end,

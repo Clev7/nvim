@@ -37,3 +37,4 @@ opt.clipboard = "unnamed,unnamedplus"
 opt.isfname:append("@-@")
 opt.signcolumn = "yes"
 
+opt.fixeol = false
