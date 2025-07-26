@@ -37,4 +37,5 @@ opt.clipboard = "unnamed,unnamedplus"
 opt.isfname:append("@-@")
 opt.signcolumn = "yes"
 
+-- Removed automatic newline adding (Note: nvim does not show the "\n" character unlike VSCode (a.k.a the unix <EOL> character))
 opt.fixeol = false
