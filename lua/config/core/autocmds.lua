@@ -22,6 +22,7 @@ autocmd({ "BufWritePre" }, {
 	command = [[%s/\s\+$//e]],
 })
 
+-- Helps prevent adding newlines
 autocmd("BufReadPost", {
   pattern = "*",
   callback = function()
