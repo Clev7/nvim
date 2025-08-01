@@ -1,6 +1,7 @@
 require("config.core.mappings")
 require("config.core.options")
 require("config.core.autocmds")
+require("config.core.globals")
 
 -- Change the Diagnostic symbols in the sign column (gutter)
 -- (not in youtube nvim video)

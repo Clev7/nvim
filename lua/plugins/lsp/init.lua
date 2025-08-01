@@ -62,7 +62,7 @@ return {
         })
         local cmp = require("cmp")
         local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilites = vim.tbl_deep_extend(
+        local capabilities = vim.tbl_deep_extend(
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
@@ -75,19 +75,18 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
                 "jdtls",
             },
 
             handlers = {
                 function(server_name)
                     lspconfig[server_name].setup({
-                        capabilites = capabilites,
+                        capabilities = capabilities,
                     })
                 end,
                 ["lua_ls"] = function()
                     lspconfig["lua_ls"].setup({
-                        capabilites = capabilites,
+                        capabilities = capabilities,
                         settings = {
                             Lua = {
                                 runtime = {
@@ -112,14 +111,15 @@ return {
                                 },
 
                                 workspace = {
-                                    library = {
-                                        vim.env.VIMRUNTIME,
-                                        vim.fn.stdpath("data") .. "/lazy",
-                                    },
-                                },
-                            },
+                                    -- includes Neovim runtime files
+                                    library = vim.api.nvim_get_runtime_file("", true),
 
-                            telemetry = { enable = false },
+                                    -- disable prompts about third-party
+                                    checkThirdParty = false,
+                                },
+
+                                telemetry = { enable = false },
+                            },
                         },
                     })
                 end,
