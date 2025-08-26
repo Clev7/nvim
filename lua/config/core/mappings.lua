@@ -31,9 +31,9 @@ map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer" })
 map("n", "<S-TAB>", "<cmd>bprev<CR>", { desc = "go to the previous buffer" })
 
-map("n", "<leader>fm", function()
-    require("conform").format({ lsp_fallback = true })
-end, { desc = "general format file" })
+-- map("n", "<leader>fm", function()
+--     require("conform").format({ lsp_fallback = true })
+-- end, { desc = "general format file" })
 
 -- Move the current selection up down
 map("v", "J", ":m '>+1<CR>gv=gv")

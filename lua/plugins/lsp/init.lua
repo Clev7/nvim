@@ -25,11 +25,12 @@ return {
                 python = { "ruff_format" },
                 java = { "google-java-format" },
                 cpp = { "clang-format" },
-                javascript = { "prettierd" },
-                typescript = { "prettierd" },
-                typescriptreact = { "prettierd" },
-                javascriptreact = { "prettierd" },
-                markdown = { "grammarly" },
+                javascript = { "prettierd", "eslint_d"}, -- js
+                typescript = { "prettierd", "eslint_d"}, -- ts
+                typescriptreact = { "prettierd", "eslint_d"}, -- tsx
+                javascriptreact = { "prettierd", "eslint_d"}, -- jsx
+                json = { "prettierd" },
+                markdown = { "grammarly" }, -- md
             },
 
             formatters = {
@@ -50,11 +51,11 @@ return {
                     -- "package.json",
                 }),
 
-                -- Makes sure prettier only runs when it finds a .prettierrc
+                -- makes sure prettier only runs when it finds a .prettierrc
                 require_cwd = true,
             },
 
-            -- Comment this out if it gets too annoying
+            -- comment this out if it gets too annoying
             -- format_on_save = {
             -- 	timeout_ms = 500,
             -- 	lsp_fallback = true,
@@ -139,7 +140,7 @@ return {
             completion = {
                 -- I'm not sure why completeopt works and autocomplete doesn't
                 -- autocomplete = { "InsertEnter", "TextChangedI"},
-                completeopt = "menu,menuone,noselect"
+                completeopt = "menu,menuone,noselect",
             },
 
             mapping = cmp.mapping.preset.insert({
