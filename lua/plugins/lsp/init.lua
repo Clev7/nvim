@@ -13,6 +13,7 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        { "roobert/tailwindcss-colorizer-cmp.nvim", opts = { color_square_width = 3 } },
     },
     config = function()
         local conform = require("conform")
@@ -130,6 +131,7 @@ return {
 
         -- cmp config
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local tw_colorizer = require("tailwindcss-colorizer-cmp").formatter
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -141,6 +143,11 @@ return {
                 -- I'm not sure why completeopt works and autocomplete doesn't
                 -- autocomplete = { "InsertEnter", "TextChangedI"},
                 completeopt = "menu,menuone,noselect",
+            },
+
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
             },
 
             mapping = cmp.mapping.preset.insert({
@@ -159,6 +166,24 @@ return {
             }, {
                 { name = "buffer" },
             }),
+
+            formatting = {
+                fields = { "kind", "abbr", "menu"},
+                format = function(entry, vim_item)
+                    -- From ChatGPT
+
+                    vim_item = tw_colorizer(entry, vim_item)
+
+                    vim_item.menu = ({
+                        nvim_lsp = "[LSP]",
+                        buffer = "[BUF]",
+                        path = "[PATH]",
+                        luasnip = "[SNIP]"
+                    })[entry.source.name]
+
+                    return vim_item
+                end
+            }
         })
 
         vim.diagnostic.config({
