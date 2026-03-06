@@ -87,6 +87,18 @@ return {
                         capabilities = capabilities,
                     })
                 end,
+                ["cssls"] = function ()
+                    lspconfig["css_ls"].setup({
+                        settings = {
+                            css = {
+                                validate = true,
+                                lint = {
+                                    unknownAtRules = "ignore"
+                                }
+                            }
+                        }
+                    })
+                end,
                 ["lua_ls"] = function()
                     lspconfig["lua_ls"].setup({
                         capabilities = capabilities,
