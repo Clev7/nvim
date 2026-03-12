@@ -12,6 +12,7 @@ opt.smarttab = true
 
 -- Guess indent is doing the work now.
 -- opt.smartindent = true
+
 opt.wrap = false
 
 opt.swapfile = false
@@ -38,4 +39,6 @@ opt.isfname:append("@-@")
 opt.signcolumn = "yes"
 
 -- Removed automatic newline adding (Note: nvim does not show the "\n" character unlike VSCode (a.k.a the unix <EOL> character))
-opt.fixeol = false
+-- opt.fixeol = false
+
+opt.winborder = "rounded"

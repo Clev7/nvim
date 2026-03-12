@@ -72,7 +72,18 @@ return {
         )
 
         require("fidget").setup({})
+
         local lspconfig = require("lspconfig")
+
+        -- Add border to the diagnostic popup window
+        vim.diagnostic.config({
+            virtual_text = {
+                prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
+            },
+            float = { border = border },
+        })
+
+
         require("mason").setup({})
         require("mason-lspconfig").setup({
             ensure_installed = {
@@ -88,7 +99,8 @@ return {
                     })
                 end,
                 ["cssls"] = function ()
-                    lspconfig["css_ls"].setup({
+                    -- It's differently spelled from lua_ls
+                    lspconfig["cssls"].setup({
                         settings = {
                             css = {
                                 validate = true,
@@ -97,45 +109,6 @@ return {
                                 }
                             }
                         }
-                    })
-                end,
-                ["lua_ls"] = function()
-                    lspconfig["lua_ls"].setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = {
-                                    version = "LuaJIT",
-                                    path = vim.split(package.path, ";"),
-                                },
-                                diagnostics = {
-                                    globals = { "vim" },
-                                    disable = { "missing-fields" },
-                                },
-                                completion = {
-                                    callSnippet = "Replace",
-                                },
-                                format = {
-                                    enable = true,
-                                    -- Put format options here
-                                    -- The value needs to be a STRING!
-                                    defaultConfig = {
-                                        indent_style = "space",
-                                        indent_size = "2",
-                                    },
-                                },
-
-                                workspace = {
-                                    -- includes Neovim runtime files
-                                    library = vim.api.nvim_get_runtime_file("", true),
-
-                                    -- disable prompts about third-party
-                                    checkThirdParty = false,
-                                },
-
-                                telemetry = { enable = false },
-                            },
-                        },
                     })
                 end,
             },
@@ -198,7 +171,8 @@ return {
             }
         })
 
-        vim.diagnostic.config({
+        -- TODO: Compare with old vim.diagnostic.config
+        --[[ vim.diagnostic.config({
             -- update_in_insert = true,
             float = {
                 focusable = false,
@@ -208,6 +182,6 @@ return {
                 header = "",
                 prefix = "",
             },
-        })
+        }) ]]
     end,
 }

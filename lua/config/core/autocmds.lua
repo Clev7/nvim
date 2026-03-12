@@ -103,7 +103,7 @@ autocmd("LspAttach", {
 		opts.desc = "restart lsp"
 
 		-- mapping to restart lsp if necessary
-		vim.keymap.set("n", "<leader>rs", ":lsprestart<cr>", opts)
+		vim.keymap.set("n", "<leader>rs", ":LspRestart<cr>", opts)
 
 		opts.desc = "format the current buffer"
 		opts.silent = false
