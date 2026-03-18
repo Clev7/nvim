@@ -14,6 +14,8 @@ return {
             "rust",
             "java",
             "go",
+            "markdown",
+            "markdown_inline"
         },
 
         sync_install = false,
