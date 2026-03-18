@@ -17,6 +17,7 @@ opt.wrap = false
 
 opt.swapfile = false
 opt.backup = false
+
 -- theprimeagen's set.lua stuff
 opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
 opt.undofile = true
@@ -41,4 +42,5 @@ opt.signcolumn = "yes"
 -- Removed automatic newline adding (Note: nvim does not show the "\n" character unlike VSCode (a.k.a the unix <EOL> character))
 -- opt.fixeol = false
 
+-- rounded window border
 opt.winborder = "rounded"

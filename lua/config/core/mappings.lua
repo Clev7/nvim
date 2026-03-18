@@ -25,7 +25,7 @@ map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 map({ "n", "i" }, "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
--- map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+-- Conflicts with the renaming
 -- map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 
 map("n", "<TAB>", "<cmd>bnext<CR>", { desc = "go to the next buffer" })
