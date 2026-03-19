@@ -1,17 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- Ensure treesitter injection highlighting in LSP hover floating windows
-autocmd("BufWinEnter", {
-    callback = function(ev)
-        if vim.bo[ev.buf].filetype ~= "markdown" then return end
-        local win = vim.fn.bufwinid(ev.buf)
-        if win == -1 then return end
-        if vim.api.nvim_win_get_config(win).relative == "" then return end
-        pcall(vim.treesitter.start, ev.buf, "markdown")
-    end,
-})
-
 local yank_group = augroup("HighlightYank", {})
 local custom_group = augroup("Custom", {})
 

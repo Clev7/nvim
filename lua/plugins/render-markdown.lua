@@ -8,7 +8,7 @@ return {
     opts = {
         file_types = { "markdown" },
         hover = {
-            enabled = true,
+            enabled = false,
         },
     },
     keys = {
