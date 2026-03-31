@@ -136,8 +136,26 @@ return {
             },
 
             mapping = cmp.mapping.preset.insert({
-                ["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
-                ["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item(cmp_select)
+                    elseif require("luasnip").jumpable(-1) then
+                        require("luasnip").jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item(cmp_select)
+                    elseif require("luasnip").expandable() then
+                        require("luasnip").expand()
+                    elseif require("luasnip").jumpable(1) then
+                        require("luasnip").jump(1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
 
                 -- Confirms autcomplete selection
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
