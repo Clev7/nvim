@@ -10,7 +10,13 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
-        "L3MON4D3/LuaSnip",
+        {
+            "L3MON4D3/LuaSnip",
+            -- follow latest release.
+            version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+            -- install jsregexp (optional!).
+            build = "make install_jsregexp"
+        },
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
         { "roobert/tailwindcss-colorizer-cmp.nvim", opts = { color_square_width = 3 } },
@@ -75,12 +81,10 @@ return {
 
         local lspconfig = require("lspconfig")
 
-        -- Add border to the diagnostic popup window
         vim.diagnostic.config({
             virtual_text = {
                 prefix = '■ ', -- Could be '●', '▎', 'x', '■', , 
             },
-            -- float = { border = border }
         })
 
 
@@ -117,10 +121,11 @@ return {
         -- cmp config
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
         local tw_colorizer = require("tailwindcss-colorizer-cmp").formatter
+        local luasnip = require('luasnip')
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require("luasnip").lsp_expand(args.body)
+                    luasnip.lsp_expand(args.body)
                 end,
             },
 
@@ -136,29 +141,40 @@ return {
             },
 
             mapping = cmp.mapping.preset.insert({
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
-                        cmp.select_prev_item(cmp_select)
-                    elseif require("luasnip").jumpable(-1) then
-                        require("luasnip").jump(-1)
+                        cmp.select_next_item()
+                    elseif luasnip.locally_jumpable(1) then
+                        luasnip.jump(1)
                     else
                         fallback()
                     end
                 end, { "i", "s" }),
-                ["<Tab>"] = cmp.mapping(function(fallback)
+
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
-                        cmp.select_next_item(cmp_select)
-                    elseif require("luasnip").expandable() then
-                        require("luasnip").expand()
-                    elseif require("luasnip").jumpable(1) then
-                        require("luasnip").jump(1)
+                        cmp.select_prev_item()
+                    elseif luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
                     else
                         fallback()
                     end
                 end, { "i", "s" }),
 
                 -- Confirms autcomplete selection
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        if luasnip.expandable() then
+                            luasnip.expand()
+                        else
+                            cmp.confirm({
+                                select = true,
+                            })
+                        end
+                    else
+                        fallback()
+                    end
+                end),
                 -- Autocompletes what you're typing
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
